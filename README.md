@@ -1,77 +1,146 @@
-# Real-Time Chat Application with Socket.io
+# React Socket.io Chat App
 
-This assignment focuses on building a real-time chat application using Socket.io, implementing bidirectional communication between clients and server.
+A real-time chat application built with **React**, **Socket.io**, and **Node.js**, supporting:
 
-## Assignment Overview
+- Public and private messaging
+- File uploads
+- Message reactions (like 👍, ❤️, 😂, etc.)
+- Typing indicators
+- Online user list
+- Responsive sidebar with hamburger menu
+- Mobile-friendly layout
+- Desktop-friendly layout with sidebar always visible
+- Sound and browser notifications (optional)
 
-You will build a chat application with the following features:
-1. Real-time messaging using Socket.io
-2. User authentication and presence
-3. Multiple chat rooms or private messaging
-4. Real-time notifications
-5. Advanced features like typing indicators and read receipts
+---
 
-## Project Structure
+## Screenshots
 
-```
-socketio-chat/
-├── client/                 # React front-end
-│   ├── public/             # Static files
-│   ├── src/                # React source code
-│   │   ├── components/     # UI components
-│   │   ├── context/        # React context providers
-│   │   ├── hooks/          # Custom React hooks
-│   │   ├── pages/          # Page components
-│   │   ├── socket/         # Socket.io client setup
-│   │   └── App.jsx         # Main application component
-│   └── package.json        # Client dependencies
-├── server/                 # Node.js back-end
-│   ├── config/             # Configuration files
-│   ├── controllers/        # Socket event handlers
-│   ├── models/             # Data models
-│   ├── socket/             # Socket.io server setup
-│   ├── utils/              # Utility functions
-│   ├── server.js           # Main server file
-│   └── package.json        # Server dependencies
-└── README.md               # Project documentation
-```
+#### Desktop View
+![Desktop view](./screenshots/Desktop_view.png)
 
-## Getting Started
+#### Mobile View
+![Mobile view](./screenshots/Mobile_view.png)
 
-1. Accept the GitHub Classroom assignment invitation
-2. Clone your personal repository that was created by GitHub Classroom
-3. Follow the setup instructions in the `Week5-Assignment.md` file
-4. Complete the tasks outlined in the assignment
+## Features
 
-## Files Included
+### Chat Features
+- **Public Rooms**: Join predefined rooms like `global`, `react`, or `random`.
+- **Private Messaging**: Send direct messages to online users.
+- **Message Reactions**: Tap a message to add reactions.
+- **File Uploads**: Upload images and files in chat.
+- **Typing Indicators**: See who is typing in real time.
+- **Unread Message Count**: Keep track of unread messages (can be added in future updates).
+- **Sound & Browser Notifications**: Notify users when new messages arrive (optional).
 
-- `Week5-Assignment.md`: Detailed assignment instructions
-- Starter code for both client and server:
-  - Basic project structure
-  - Socket.io configuration templates
-  - Sample components for the chat interface
+### Responsive Design
+- **Desktop**: Sidebar is always visible; chat area adjusted with `sm:ml-64`.
+- **Mobile**: Sidebar slides in/out with a hamburger menu; overlay closes sidebar when clicked.
 
-## Requirements
+---
 
-- Node.js (v18 or higher)
+## Tech Stack
+
+- **Frontend**: React, TailwindCSS
+- **Backend**: Node.js, Express, Socket.io
+- **Database**: MongoDB (for message storage and reactions)
+- **File Upload**: Express + Multer (or your preferred solution)
+- **Notifications**: Browser Notifications API (optional)
+  
+---
+
+## Setup Instructions
+
+### Prerequisites
+- Node.js >= 18
 - npm or yarn
-- Modern web browser
-- Basic understanding of React and Express
+- MongoDB running locally or via cloud (MongoDB Atlas)
+  
+### Backend Setup
 
-## Submission
+1. Navigate to the backend folder:
 
-Your work will be automatically submitted when you push to your GitHub Classroom repository. Make sure to:
+```bash
+cd server
 
-1. Complete both the client and server portions of the application
-2. Implement the core chat functionality
-3. Add at least 3 advanced features
-4. Document your setup process and features in the README.md
-5. Include screenshots or GIFs of your working application
-6. Optional: Deploy your application and add the URLs to your README.md
 
-## Resources
 
-- [Socket.io Documentation](https://socket.io/docs/v4/)
-- [React Documentation](https://react.dev/)
-- [Express.js Documentation](https://expressjs.com/)
-- [Building a Chat Application with Socket.io](https://socket.io/get-started/chat) 
+2. INSTALL DEPENDENCIES
+npm install
+
+3. CREATE A .env FILE WITH,
+PORT=4000
+CLIENT_URL=http://localhost:5173
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret
+
+
+4. RUN THE BACKEND
+npm run dev
+
+
+
+FRONTEND SETUP
+1. NAVIGATE TO THE FRONTEND FOLDER
+cd client
+
+
+2. INSTALL DEPENDENCIES
+npm install
+
+
+3. RUN FRONTEND
+npm run dev
+Open your browser at http://localhost:5173.
+
+
+Socket.io INTEGRATION
+The app connects to the backend via socket.io-client.
+Real-time events include:
+send_message
+private_message
+receive_message
+add_reaction
+reaction_updated
+typing
+typing_users
+user_list
+
+
+PROJECT STRUCTURE
+project-root/
+│
+├─ client/             # React frontend
+│  ├─ src/
+│  │  ├─ components/
+│  │  │  └─ Chat.jsx
+│  │  ├─ context/
+│  │  │  └─ AuthContext.jsx
+│  │  └─ socket/
+│  │     └─ socket.js
+│  └─ package.json
+│
+├─ server/             # Express + Socket.io backend
+│  ├─ controllers/
+│  │  └─ chatController.js
+│  ├─ models/
+│  │  └─ Message.js
+│  ├─ routes/
+│  │  └─ chatRoutes.js
+│  ├─ server.js
+│  └─ package.json
+│
+└─ README.md
+
+
+
+USAGE
+1. Open the frontend in multiple browser tabs.
+2. Join the same or different rooms.
+3. Send messages, upload files, react to messages.
+4. See typing indicators and online users in real time.
+5. Toggle sidebar on mobile using the hamburger menu.
+
+
+License
+MIT © AntolTECHS
